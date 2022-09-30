@@ -6,15 +6,15 @@ class App:
     Classe représentant l'application Pyxel.
     """
     def __init__(self):
-        pyxel.init(160, 120, "Binaire Clicker", 60)
+        pyxel.init(1400, 630, "0b1001", 60)
         self.x = 0
         pyxel.run(self.update, self.draw)
 
     def update(self):
+        pyxel.image(0).load(10, 10, "rsc/icon_large.png")
         self.x = (self.x + 1) % pyxel.width
 
     def draw(self):
-        pyxel.cls(0)
-        pyxel.rect(self.x, 0, 8, 8, 9)
+        return 0
 
 App()
