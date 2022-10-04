@@ -4,6 +4,38 @@ import pyxel, time, random
  
 nb_lignes_sprites = 3
 
+class App:
+    """
+    Classe représentant l'application Pyxel.
+    """
+    def __init__(self):
+        pyxel.init(108, 72, "0b1001", 60, display_scale=10)
+        pyxel.load("rsc/ressources.pyxres")
+        pyxel.mouse(True)
+        self.hp_bar = HealthBar(9, 55)
+        self.player = Player()
+        self.coin = Coins(3, 2)
+        self.monster = Monster(15, 20)
+        self.shop = Shop(65, 12)
+        pyxel.run(self.update, self.draw)
+
+    def update(self):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) or pyxel.btnp(pyxel.KEY_SPACE):
+            if 64 < pyxel.mouse_x < 102 and 8 < pyxel.mouse_y < 30:
+                self.shop.buy_strength(self.player, self.coin)
+            else:
+                self.monster.being_hit = 1
+                self.player.attack(self.monster, self.coin)
+
+    def draw(self):
+        pyxel.camera()
+        pyxel.cls(0)
+        pyxel.bltm(0, 0, 0, 0, 0, 108, 72)
+        self.coin.draw()
+        self.hp_bar.draw(self.monster)
+        self.monster.draw()
+        self.shop.draw(self.player)
+
 
 class Coins:
     def __init__(self, x, y, purse=0):
@@ -46,6 +78,7 @@ class Monster:
     def set_new_index(self):
         self.index = random.randint(0, 3)
 
+
 class HealthBar:
     def __init__(self, x, y):
         self.x = x
@@ -72,37 +105,21 @@ class Player:
             monster.lvl += 1
             monster.reset_hp()
             monster.set_new_index()
-            coins.purse += (monster.lvl // 5 + 1)*self.coin_multiplier+random.randint(0, 5)
+            coins.purse += (monster.lvl ** 2 + 1)*self.coin_multiplier+random.randint(0, 5)
 
 
-class App:
-    """
-    Classe représentant l'application Pyxel.
-    """
-    def __init__(self):
-        pyxel.init(108, 72, "0b1001", 60, display_scale=10)
-        pyxel.load("rsc/ressources.pyxres")
-        pyxel.mouse(True)
-        self.hp_bar = HealthBar(9, 55)
-        self.player = Player()
-        self.coin = Coins(3, 2)
-        self.monster = Monster(15, 20)
-        pyxel.run(self.update, self.draw)
+class Shop:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-    def update(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) or pyxel.btnp(pyxel.KEY_SPACE):
-            if 64 < pyxel.mouse_x < 102 and 8 < pyxel.mouse_y < 30:
-                print("box 1 cliquée")
-            self.monster.being_hit = 1
-            self.player.attack(self.monster, self.coin)
-
-    def draw(self):
-        pyxel.camera()
-        pyxel.cls(0)
-        pyxel.bltm(0, 0, 0, 0, 0, 108, 72)
-        self.coin.draw()
-        self.hp_bar.draw(self.monster)
-        self.monster.draw()
-
+    def draw(self, player: Player):
+        pyxel.text(self.x, self.y, f"Force : {player.strength}\n\nUP : {player.strength**2}$", 7)
+    
+    def buy_strength(self, player: Player, coins : Coins):
+        if coins.purse - player.strength**2 >= 0:
+            pyxel.play(0, 1)
+            player.strength += 1
+            coins.purse -= player.strength**2
 
 App()
