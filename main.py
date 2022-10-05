@@ -17,15 +17,15 @@ class App:
         self.coin = Coins(3, 2)
         self.monster = Monster(15, 20)
         self.shop = Shop(65, 12)
+        self.binaire = Binaire(65, 45, self.monster.lvl)
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) or pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             if 64 < pyxel.mouse_x < 102 and 8 < pyxel.mouse_y < 30:
                 self.shop.buy_strength(self.player, self.coin)
-            else:
-                self.monster.being_hit = 1
-                self.player.attack(self.monster, self.coin)
+            # self.monster.being_hit = 1
+            # self.player.attack(self.monster, self.coin)
 
     def draw(self):
         pyxel.camera()
@@ -34,6 +34,7 @@ class App:
         self.coin.draw()
         self.hp_bar.draw(self.monster)
         self.monster.draw()
+        self.binaire.draw()
         self.shop.draw(self.player)
 
 
@@ -107,6 +108,15 @@ class Player:
             monster.set_new_index()
             coins.purse += (monster.lvl ** 2 + 1)*self.coin_multiplier+random.randint(0, 5)
 
+
+class Binaire:
+    def __init__(self, x, y, lvl):
+        self.x = x
+        self.y = y
+        self.bin = random.randint(0, lvl+1)+1
+
+    def draw(self):
+        pyxel.text(self.x, self.y, f"{bin(self.bin)}", 7)
 
 class Shop:
     def __init__(self, x, y):
