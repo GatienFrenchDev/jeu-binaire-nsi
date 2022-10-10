@@ -24,7 +24,7 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
+        if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT):
             if 64 < pyxel.mouse_x < 102 and 8 < pyxel.mouse_y < 30:
                 self.shop.buy_strength(self.player, self.coin)
             self.monster.being_hit = 1
@@ -67,6 +67,7 @@ class Monster:
         if self.being_hit > 0:
             self.being_hit += 1
             pyxel.blt(self.x+2, self.y+1, 1, self.index*16, ((self.lvl // 4) % nb_lignes_sprites)*16, 16, 16, 0)
+            pyxel.fill(self.x, self.y, 4)
             
             if self.being_hit > 5: # durée de l'animation (ici 5 frames soit environ 0.08s)
                 pyxel.blt(self.x-2, self.y+1, 1, self.index*16, ((self.lvl // 4) % nb_lignes_sprites)*16, 16, 16, 0)
