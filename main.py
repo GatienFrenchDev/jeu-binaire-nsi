@@ -24,11 +24,11 @@ class App:
         pyxel.run(self.update, self.draw)
 
     def update(self):
-        if pyxel.btn(pyxel.MOUSE_BUTTON_LEFT):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             if 64 < pyxel.mouse_x < 102 and 8 < pyxel.mouse_y < 30:
                 self.shop.buy_strength(self.player, self.coin)
-            self.monster.being_hit = 1
-            self.player.attack(self.monster, self.coin)
+            #self.monster.being_hit = 1
+            #self.player.attack(self.monster, self.coin)
 
     def draw(self):
         pyxel.camera()
@@ -134,7 +134,7 @@ class Binaire:
         elif pyxel.btnp(pyxel.KEY_7):self.liste.append(7)
         elif pyxel.btnp(pyxel.KEY_8):self.liste.append(8)
         elif pyxel.btnp(pyxel.KEY_9):self.liste.append(9)
-        elif pyxel.btnp(pyxel.KEY_DELETE):
+        elif pyxel.btnp(pyxel.KEY_BACKSPACE):
             if len(self.liste) == 0:self.liste.append(0),self.liste.pop()
             else:self.liste.pop()
         
@@ -144,7 +144,7 @@ class Binaire:
         pyxel.text(self.x, self.y, f"{bin(self.bin)}", 7)
         RespBin = sum(d * 10**i for i, d in enumerate(self.liste[::-1])) #transforme la liste en int
 
-        if pyxel.btnp(pyxel.KEY_R):
+        if pyxel.btnp(pyxel.KEY_RETURN):
             if self.bin == RespBin:
                 monster.being_hit = 1
                 player.attack(monster, coin)
@@ -162,14 +162,14 @@ class Shop:
         self.y = y
 
     def draw(self, player: Player):
-        pyxel.text(self.x, self.y, f"Force:\n{player.strength}\nUP:\n{player.strength**2}$", 7)
+        pyxel.text(self.x, self.y, f"force:\n{player.strength}\nup:\n{player.strength**2}$", 7)
     
     def buy_strength(self, player: Player, coins : Coins):
         if coins.purse - player.strength**2 >= 0:
             player.strength += 1
             coins.purse -= player.strength**2
 
-class Music: # prise du grand monsieur https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/04_sound_api.py
+class Music: # bout de code venant d'un exemple du module pyxel https://github.com/kitao/pyxel/blob/main/python/pyxel/examples/04_sound_api.py
     def musika(self):
         pyxel.sound(0).set(
             "e2e2c2g1 g1g1c2e2 d2d2d2g2 g2g2rr" "c2c2a1e1 e1e1a1c2 b1b1b1e2 e2e2rr",
