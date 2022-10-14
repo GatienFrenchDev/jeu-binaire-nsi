@@ -8,9 +8,6 @@ Ce jeu a permis d'acquérir de l'expérience avec cette librairie pour pouvoir p
 
 ![image](https://user-images.githubusercontent.com/80203026/195835842-c56325e0-6900-4321-ac66-6dd366d669aa.png)
 
-![image](https://user-images.githubusercontent.com/80203026/195836140-b179ca5b-78c5-4c96-96af-fe4fdae85880.png)
-
-
 ### Comment lancer le jeu ?
 Pour jouer au jeu rien de compliquer :
 - tout d'abord, télécharger le repo :
@@ -41,3 +38,5 @@ git clone https://github.com/GatienFrenchDev/jeu-binaire-nsi.git
 Plus votre niveau est haut, plus les P.V. du monstre, son nombre de coins attribué et le niveau des conversions augmentent.
 
 Avec les Coins gagnés vous pouvez acheter de la force pour augmenter vos dégâts.
+
+![image](https://user-images.githubusercontent.com/80203026/195836140-b179ca5b-78c5-4c96-96af-fe4fdae85880.png)
