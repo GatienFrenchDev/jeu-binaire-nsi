@@ -5,7 +5,9 @@ Ce jeu est un projet de nsi de terminale. Il a pour but d'apprendre à **convert
 Il est codé en Python et utilise la librairie **[pyxel](https://github.com/kitao/pyxel)**.
 
 Ce jeu a permis d'acquérir de l'expérience avec cette librairie pour pouvoir par la suite participer à la Nuit du Code.
+
 ![image](https://user-images.githubusercontent.com/80203026/195835842-c56325e0-6900-4321-ac66-6dd366d669aa.png)
+
 ![image](https://user-images.githubusercontent.com/80203026/195836140-b179ca5b-78c5-4c96-96af-fe4fdae85880.png)
 
 
