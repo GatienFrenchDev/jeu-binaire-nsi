@@ -6,7 +6,7 @@ Il est codé en Python et utilise la librairie **[pyxel](https://github.com/kita
 
 Ce jeu a permis d'acquérir de l'expérience avec cette librairie pour pouvoir par la suite participer à la Nuit du Code.
 
-![](https://user-images.githubusercontent.com/80203026/195835842-c56325e0-6900-4321-ac66-6dd366d669aa.png | width=100)
+<img src="[https://github.com/favicon.ico](https://user-images.githubusercontent.com/80203026/195835842-c56325e0-6900-4321-ac66-6dd366d669aa.png)" width="64">
 
 ### Comment lancer le jeu ?
 Pour jouer au jeu rien de compliquer :
