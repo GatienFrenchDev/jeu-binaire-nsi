@@ -17,7 +17,7 @@ class App:
     Classe représentant l'application Pyxel.
     """
     def __init__(self):
-        pyxel.init(108, 72, "0b1001", 60, display_scale=10)
+        pyxel.init(108, 72, "Projet 0b1001", 60, display_scale=10)
         pyxel.load("rsc/ressources.pyxres")
         pyxel.mouse(True)
         self.hp_bar = HealthBar(9, 55)
