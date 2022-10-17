@@ -1,4 +1,4 @@
-# Jeu binaire NSI [0b1001]
+# Projet 0b1001 [Jeu Binaire]
 
 Ce jeu est un projet de nsi de terminale. Il a pour but d'apprendre à **convertir** un nombre dans différentes bases (binaire, hexadecimal) et s'entrainer sur le calcul mental.
 
