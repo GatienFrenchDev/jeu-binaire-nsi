@@ -2,7 +2,7 @@ import pyxel, random
 
 class Player:
     def __init__(self):
-        self.strength = 1
+        self.strength = 3
         self.multiplier = 1
         self.coin_multiplier = 1
 
